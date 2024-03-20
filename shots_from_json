@@ -40,3 +40,11 @@ if len(shot)!=0:
        shot_name = menu [i]
 
 shot = hou.putenv("ARNA_SHOT", shot_name)
+
+
+
+# projects_path = hou.getenv("CU_PROJECTS_PATH")
+# project = hou.getenv("ARNA_PROJECT")
+# shot = hou.getenv("ARNA_SHOT")
+# char_folder = os.path.join(projects_path, project, shot, "GCH")
+# anim_string = "anim"
