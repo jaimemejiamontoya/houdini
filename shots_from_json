@@ -1,0 +1,42 @@
+List of shots from json file
+
+import json
+import os
+
+shot_list_root = "D:\projects\SLV\_app\houdini"
+shot_list_file = "shotList.json"
+
+shot_list_path = os.path.join(shot_list_root,shot_list_file)
+
+def get_json_data(jdata):
+    with open(jdata, 'r') as json_file:
+        data = json.load(json_file)
+    
+    return data
+
+def list_to_menu(theList):
+        menu = []
+
+        for i in range(len(theList)):
+                index = str(i)
+                item = theList[i]
+#                menu.append(index)
+                menu.append(item)
+        return menu
+
+menu_data = get_json_data(shot_list_path)
+#
+entry = "list"
+#
+items = menu_data[entry]
+
+menu = list_to_menu(items)
+
+shot = hou.ui.selectFromList(menu, message='Select the shot context')
+
+
+if len(shot)!=0:
+    for i in shot:
+       shot_name = menu [i]
+
+shot = hou.putenv("ARNA_SHOT", shot_name)
